@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangle Class</title>
+</head>
+<body>
+<canvas id="myCanvas" width="500px" height="800px">
+This Browser not support!!!
+</canvas>
+    <script>
+        function Rectangle(width,height){
+            this.width=width;
+            this.height=height;
+            this.posX=10;
+            this.posY=10;
+            this.getWidth=function(){
+                return this.width;
+            }
+            this.setWidth=function(width){
+                this.width=width;
+            }
+            this.getHeight=function(){
+                return this.height;
+            }
+            this.setHeight=function(height){
+                this.height=height;
+            }
+            this.area=  function(){
+                return this.height*this.width;
+            }
+            this.perimeter= function(){
+                return (this.height+this.width)*2;
+            }
+            this.drawRect=function(canvas){
+                let ctx=canvas.getContext("2d");
+                ctx.beginPath();
+                ctx.strokeStyle="blue";
+                ctx.strokeRect(this.posX,this.posY,this.height,this.width);
+            }
+            this.drawArea=function (canvas) {
+                let ctx=canvas.getContext("2d");
+                ctx.beginPath();
+                ctx.font="30px Arial";
+                ctx.strokeText("Area:" + this.area(), this.posX+20, this.posY+40);
+            }
+            this.drawPerimeter=function (canvas) {
+                let ctx=canvas.getContext("2d");
+                ctx.beginPath();
+                ctx.font="30px Arial";
+                ctx.strokeText("Perimeter: " + this.perimeter(), this.posX+20, this.posY+80);
+            }
+
+        }
+
+        let rect= new Rectangle(300,400);
+        let canvas= document.getElementById("myCanvas");
+        rect.drawRect(canvas);
+        rect.drawArea(canvas);
+        rect.drawPerimeter(canvas);
+
+
+    </script>
+</body>
+</html>
